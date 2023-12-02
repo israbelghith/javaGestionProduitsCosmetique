@@ -4,6 +4,7 @@
  */
 package dbproduit;
 
+import java.awt.Component;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
@@ -13,7 +14,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
 
 /**
  *
@@ -46,21 +51,32 @@ ResultSet rs;
             Logger.getLogger(ProduitJfram.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
+  
       public void AfficherList()
     {
         try {
+            JLabel imageLabel=new JLabel();
+            
             pst = con.prepareStatement("select * from produit");
             rs=pst.executeQuery();
            // txtpid.removeAllItems();
             
+            //caher la case de l'ID
              jTable1.getColumnModel().getColumn(0).setMinWidth(0);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(0).setWidth(0);
+            //caher la case de l'image
+            jTable1.getColumnModel().getColumn(7).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(7).setWidth(0);
+            
+            
              model=(DefaultTableModel) jTable1.getModel();
              model.setRowCount(0);
             while(rs.next()){
-             model.addRow(new String[] {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)});
+               
+             model.addRow(new String[] {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)});
+        
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProduitJfram.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,6 +101,7 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
         UpdateButton = new javax.swing.JButton();
         Supprimer = new javax.swing.JButton();
         ConsulterProduit = new javax.swing.JButton();
+        refreshbutton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,6 +154,13 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
             }
         });
 
+        refreshbutton.setText("REFERSH");
+        refreshbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshbuttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,10 +168,6 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(173, 173, 173))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                         .addGap(37, 37, 37))
@@ -160,13 +180,21 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
                         .addGap(60, 60, 60)
                         .addComponent(Supprimer)
                         .addGap(67, 67, 67))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(refreshbutton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(173, 173, 173))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(UpdateButton)
@@ -191,9 +219,11 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
     
     public void addTableHeader(){
         model=(DefaultTableModel) jTable1.getModel();
-        Object[] newIdentifiers= new Object[]{"ID","Nom Produit","Prix","Quantite","Promo","Description","Couleur"};
+        Object[] newIdentifiers= new Object[]{"ID","Nom Produit","Prix","Quantite","Promo","Description","Couleur","Image"};
         model.setColumnIdentifiers(newIdentifiers);
+      
     }
+   
     
     
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -224,21 +254,16 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
          updateProduitJFrame.viewSeletedRow.setText(model.getValueAt(selectedRowFroNewFrame, 0).toString());
          System.out.println("selected row value="+selectedRowFroNewFrame);
          updateProduitJFrame.txtnom.setText(model.getValueAt(selectedRowFroNewFrame, 1).toString());
-         updateProduitJFrame.txtqte.setText(model.getValueAt(selectedRowFroNewFrame,2).toString());
-         updateProduitJFrame.txtprix.setText(model.getValueAt(selectedRowFroNewFrame, 3).toString());
-         //updateProduitJFrame.txtprix.setText(prix);
+         updateProduitJFrame.txtqte.setText(model.getValueAt(selectedRowFroNewFrame,3).toString());
+         updateProduitJFrame.txtprix.setText(model.getValueAt(selectedRowFroNewFrame, 2).toString());
+         updateProduitJFrame.txtcouleur.setText(model.getValueAt(selectedRowFroNewFrame, 6).toString());
+         updateProduitJFrame.promo=model.getValueAt(selectedRowFroNewFrame, 4).toString();
          updateProduitJFrame.txtdescription.setText(model.getValueAt(selectedRowFroNewFrame, 5).toString());
+          ImageIcon imgIcon=new ImageIcon(new ImageIcon(model.getValueAt(selectedRowFroNewFrame, 7).toString()).getImage().getScaledInstance(250, 250, 250));
+         updateProduitJFrame.jLabelImage.setIcon(imgIcon);
+         updateProduitJFrame.linkImage=model.getValueAt(selectedRowFroNewFrame, 7).toString();
          //updateProduitJFrame.jComboBox1.setc(model.getValueAt(selectedRowFroNewFrame, 6).toString());
-                 
-        /* String newName=model.getValueAt(selectedRowFroNewFrame, 1).toString();
-         String newqte=model.getValueAt(selectedRowFroNewFrame, 2).toString();
-         String newpromo=model.getValueAt(selectedRowFroNewFrame, 3).toString();
-         String newprix=model.getValueAt(selectedRowFroNewFrame, 4).toString();
-         String newdescription=model.getValueAt(selectedRowFroNewFrame, 5).toString();
-         String newcouleur=model.getValueAt(selectedRowFroNewFrame, 6).toString();
-*/
-         
-         //view the selected row value
+        
           
      }
     }//GEN-LAST:event_UpdateButtonActionPerformed
@@ -294,11 +319,20 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
          consulterProduitJFrame.txtpromo.setText(model.getValueAt(selectedRowFroViewFrame, 4).toString());
          consulterProduitJFrame.txtcouleur.setText(model.getValueAt(selectedRowFroViewFrame, 6).toString());
          consulterProduitJFrame.txtdescription.setText(model.getValueAt(selectedRowFroViewFrame, 5).toString());
+         ImageIcon imgIcon=new ImageIcon(new ImageIcon(model.getValueAt(selectedRowFroViewFrame, 7).toString()).getImage().getScaledInstance(250, 250, 250));
+         consulterProduitJFrame.jLabelImage.setIcon(imgIcon);
+          consulterProduitJFrame.linkpath.setText(model.getValueAt(selectedRowFroViewFrame, 7).toString());
       
           
      }
         
     }//GEN-LAST:event_ConsulterProduitActionPerformed
+
+    private void refreshbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshbuttonActionPerformed
+        // TODO add your handling code here:
+                 model.setRowCount(0);  
+              AfficherList();
+    }//GEN-LAST:event_refreshbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,5 +377,6 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JToggleButton refreshbutton;
     // End of variables declaration//GEN-END:variables
 }
