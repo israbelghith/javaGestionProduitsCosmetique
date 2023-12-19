@@ -35,17 +35,16 @@ public class AcceuilForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         gérer_Produits = new javax.swing.JToggleButton();
         gérer_Utilisateurs = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(218, 218, 239));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         gérer_Produits.setBackground(new java.awt.Color(153, 0, 102));
-        gérer_Produits.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        gérer_Produits.setFont(new java.awt.Font("Goudy Old Style", 1, 18)); // NOI18N
         gérer_Produits.setForeground(new java.awt.Color(239, 234, 234));
         gérer_Produits.setText("Gérer Produits");
         gérer_Produits.addActionListener(new java.awt.event.ActionListener() {
@@ -53,9 +52,10 @@ public class AcceuilForm extends javax.swing.JFrame {
                 gérer_ProduitsActionPerformed(evt);
             }
         });
+        getContentPane().add(gérer_Produits, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 306, 47));
 
         gérer_Utilisateurs.setBackground(new java.awt.Color(153, 0, 102));
-        gérer_Utilisateurs.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        gérer_Utilisateurs.setFont(new java.awt.Font("Goudy Old Style", 1, 18)); // NOI18N
         gérer_Utilisateurs.setForeground(new java.awt.Color(239, 234, 234));
         gérer_Utilisateurs.setText("Gérer Utilisateurs");
         gérer_Utilisateurs.addActionListener(new java.awt.event.ActionListener() {
@@ -63,49 +63,15 @@ public class AcceuilForm extends javax.swing.JFrame {
                 gérer_UtilisateursActionPerformed(evt);
             }
         });
+        getContentPane().add(gérer_Utilisateurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 306, 47));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 102));
-        jLabel1.setText("Page Acceuil");
+        jLabel1.setFont(new java.awt.Font("Goudy Old Style", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(241, 215, 142));
+        jLabel1.setText("Beauty  Maker");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 290, 66));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gérer_Utilisateurs, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(gérer_Produits, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(219, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(99, 99, 99)
-                .addComponent(gérer_Produits, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(gérer_Utilisateurs, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/e8.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 770, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -164,6 +130,6 @@ public class AcceuilForm extends javax.swing.JFrame {
     private javax.swing.JToggleButton gérer_Produits;
     private javax.swing.JToggleButton gérer_Utilisateurs;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

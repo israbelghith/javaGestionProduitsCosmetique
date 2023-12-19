@@ -51,7 +51,7 @@ ResultSet rs;
      
        public void addTableHeader(){
         model=(DefaultTableModel) jTable1.getModel();
-        Object[] newIdentifiers= new Object[]{"ID","Nom","Prenom","Email","Login","Mot De Passe"};
+        Object[] newIdentifiers= new Object[]{"ID","Nom","Prenom","Email","Adresse","NumeroTel","Login","Mot de passe"};
         model.setColumnIdentifiers(newIdentifiers);
     }
     
@@ -59,7 +59,7 @@ ResultSet rs;
       public void AfficherList()
     {
         try {
-            pst = con.prepareStatement("select * from utilisateur");
+            pst = con.prepareStatement("select * from employe");
             rs=pst.executeQuery();
            // txtpid.removeAllItems();
             
@@ -69,7 +69,7 @@ ResultSet rs;
              model=(DefaultTableModel) jTable1.getModel();
              model.setRowCount(0);
             while(rs.next()){
-             model.addRow(new String[] {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
+             model.addRow(new String[] {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)});
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProduitJfram.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,23 +87,79 @@ ConsulterUtilisateurJFrame consulterUtilisateurJFrame=new ConsulterUtilisateurJF
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        UpdateButton = new javax.swing.JButton();
         Supprimer = new javax.swing.JButton();
         ConsulterUtilisateur = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         refreshbutton = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
+        UpdateButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        viewSeletedRow = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(223, 235, 248));
+        Supprimer.setBackground(new java.awt.Color(253, 227, 227));
+        Supprimer.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        Supprimer.setText("Supprimer");
+        Supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SupprimerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Supprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 103, 40));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 0, 102));
-        jLabel1.setText("Liste Des Utilisateurs");
+        ConsulterUtilisateur.setBackground(new java.awt.Color(253, 227, 227));
+        ConsulterUtilisateur.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        ConsulterUtilisateur.setText("Consulter");
+        ConsulterUtilisateur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsulterUtilisateurActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ConsulterUtilisateur, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 100, 39));
+
+        jLabel1.setFont(new java.awt.Font("Goudy Old Style", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(241, 130, 127));
+        jLabel1.setText("Liste Des Employées");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 322, 39));
+
+        refreshbutton.setBackground(new java.awt.Color(253, 227, 227));
+        refreshbutton.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        refreshbutton.setText("Refresh");
+        refreshbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshbuttonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(refreshbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 110, 30));
+
+        jButton1.setBackground(new java.awt.Color(253, 227, 227));
+        jButton1.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        jButton1.setText("Ajouter");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 100, 40));
+
+        UpdateButton.setBackground(new java.awt.Color(253, 227, 227));
+        UpdateButton.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        UpdateButton.setText("Modifier");
+        UpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 111, 40));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,118 +174,13 @@ ConsulterUtilisateurJFrame consulterUtilisateurJFrame=new ConsulterUtilisateurJF
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(236, 230, 230));
-        jButton1.setText("Ajouter");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 750, 190));
 
-        UpdateButton.setBackground(new java.awt.Color(0, 153, 153));
-        UpdateButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        UpdateButton.setForeground(new java.awt.Color(236, 230, 230));
-        UpdateButton.setText("Modifier");
-        UpdateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateButtonActionPerformed(evt);
-            }
-        });
+        viewSeletedRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/e12.jpg"))); // NOI18N
+        getContentPane().add(viewSeletedRow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 790, 540));
 
-        Supprimer.setBackground(new java.awt.Color(0, 153, 153));
-        Supprimer.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Supprimer.setForeground(new java.awt.Color(236, 230, 230));
-        Supprimer.setText("Supprimer");
-        Supprimer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SupprimerActionPerformed(evt);
-            }
-        });
-
-        ConsulterUtilisateur.setBackground(new java.awt.Color(0, 153, 153));
-        ConsulterUtilisateur.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        ConsulterUtilisateur.setForeground(new java.awt.Color(236, 230, 230));
-        ConsulterUtilisateur.setText("Consulter");
-        ConsulterUtilisateur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsulterUtilisateurActionPerformed(evt);
-            }
-        });
-
-        refreshbutton.setBackground(new java.awt.Color(204, 204, 255));
-        refreshbutton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        refreshbutton.setText("Refresh");
-        refreshbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshbuttonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ConsulterUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(refreshbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(178, 178, 178)))
-                .addGap(45, 45, 45))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(43, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(refreshbutton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ConsulterUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -264,8 +215,10 @@ ConsulterUtilisateurJFrame consulterUtilisateurJFrame=new ConsulterUtilisateurJF
             modifierUtilisateurJFrame.txtnom.setText(model.getValueAt(selectedRowFroNewFrame, 1).toString());
             modifierUtilisateurJFrame.txtprenom.setText(model.getValueAt(selectedRowFroNewFrame,2).toString());
             modifierUtilisateurJFrame.txtemail.setText(model.getValueAt(selectedRowFroNewFrame, 3).toString());
-            modifierUtilisateurJFrame.txtlogin.setText(model.getValueAt(selectedRowFroNewFrame, 4).toString());
-            modifierUtilisateurJFrame.txtpassword.setText(model.getValueAt(selectedRowFroNewFrame, 5).toString());
+            modifierUtilisateurJFrame.txtadresse.setText(model.getValueAt(selectedRowFroNewFrame, 4).toString());
+            modifierUtilisateurJFrame.txtnum.setText(model.getValueAt(selectedRowFroNewFrame, 5).toString());
+            modifierUtilisateurJFrame.txtlogin.setText(model.getValueAt(selectedRowFroNewFrame, 6).toString());
+            modifierUtilisateurJFrame.txtpassword.setText(model.getValueAt(selectedRowFroNewFrame, 7).toString());
            
            
 
@@ -280,15 +233,15 @@ ConsulterUtilisateurJFrame consulterUtilisateurJFrame=new ConsulterUtilisateurJF
             String delId=  model.getValueAt(getSelectedRowForDelete, 0).toString();
 
             try {
-                pst = con.prepareStatement("delete from utilisateur where idU=?");
+                pst = con.prepareStatement("delete from employe where idE=?");
                 pst.setString(1,delId);
                 int rs=pst.executeUpdate();
                 if(rs==1){
-                    JOptionPane.showMessageDialog(null,"Produit Supprimé avec succès");
+                    JOptionPane.showMessageDialog(null,"Employé Supprimé avec succès");
 
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Erreur lors de supprimé ce Produit!!!");
+                    JOptionPane.showMessageDialog(null,"Erreur lors de supprimé ce Employé!!!");
 
                 }
             } catch (SQLException ex) {
@@ -318,8 +271,10 @@ ConsulterUtilisateurJFrame consulterUtilisateurJFrame=new ConsulterUtilisateurJF
             consulterUtilisateurJFrame.txtnom.setText(model.getValueAt(selectedRowFroNewFrame, 1).toString());
             consulterUtilisateurJFrame.txtprenom.setText(model.getValueAt(selectedRowFroNewFrame,2).toString());
             consulterUtilisateurJFrame.txtemail.setText(model.getValueAt(selectedRowFroNewFrame, 3).toString());
-            consulterUtilisateurJFrame.txtlogin.setText(model.getValueAt(selectedRowFroNewFrame, 4).toString());
-            consulterUtilisateurJFrame.txtpassword.setText(model.getValueAt(selectedRowFroNewFrame, 5).toString());
+            consulterUtilisateurJFrame.txtadresse.setText(model.getValueAt(selectedRowFroNewFrame, 4).toString());
+            consulterUtilisateurJFrame.txtnum.setText(model.getValueAt(selectedRowFroNewFrame, 5).toString());
+            consulterUtilisateurJFrame.txtlogin.setText(model.getValueAt(selectedRowFroNewFrame, 6).toString());
+            consulterUtilisateurJFrame.txtpassword.setText(model.getValueAt(selectedRowFroNewFrame, 7).toString());
         }
     }//GEN-LAST:event_ConsulterUtilisateurActionPerformed
 
@@ -371,9 +326,10 @@ ConsulterUtilisateurJFrame consulterUtilisateurJFrame=new ConsulterUtilisateurJF
     private javax.swing.JButton UpdateButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton refreshbutton;
+    private javax.swing.JLabel viewSeletedRow;
     // End of variables declaration//GEN-END:variables
 }

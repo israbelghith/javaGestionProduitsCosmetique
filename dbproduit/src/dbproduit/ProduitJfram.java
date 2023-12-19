@@ -46,16 +46,7 @@ public class ProduitJfram extends javax.swing.JFrame {
     
     public void LoadProduitNo()
     {
-        try {
-            pst = con.prepareStatement("select * from produit");
-            rs=pst.executeQuery();
-            txtpid.removeAllItems();
-            while(rs.next()){
-                txtpid.addItem(rs.getString(1));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ProduitJfram.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }
 
     /**
@@ -68,12 +59,7 @@ public class ProduitJfram extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        qte = new javax.swing.JTextField();
-        prix = new javax.swing.JTextField();
         btnajouter = new javax.swing.JButton();
-        btnupdate = new javax.swing.JButton();
-        txtpid = new javax.swing.JComboBox<>();
-        btnRecherche = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -91,183 +77,92 @@ public class ProduitJfram extends javax.swing.JFrame {
         txtcouleur = new javax.swing.JTextField();
         jLabelImage = new javax.swing.JLabel();
         selectImage = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnajouter.setText("Add");
+        btnajouter.setBackground(new java.awt.Color(238, 208, 238));
+        btnajouter.setFont(new java.awt.Font("Goudy Old Style", 1, 14)); // NOI18N
+        btnajouter.setText("Ajouter");
         btnajouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnajouterActionPerformed(evt);
             }
         });
+        getContentPane().add(btnajouter, new org.netbeans.lib.awtextra.AbsoluteConstraints(647, 436, 158, 35));
 
-        btnupdate.setText("Update");
-        btnupdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnupdateActionPerformed(evt);
-            }
-        });
-
-        txtpid.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btnRecherche.setText("Search");
-        btnRecherche.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRechercheActionPerformed(evt);
-            }
-        });
-
+        jLabel7.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Promotion");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 353, 84, 29));
 
+        jLabel4.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nom Produit");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 131, 90, 29));
 
+        jLabel5.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Couleur");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 288, 84, 29));
 
+        jLabel6.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Quantité ");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 186, 84, 29));
 
+        jLabel8.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Prix");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 233, 84, 29));
 
+        jLabel9.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Description");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 409, 84, 29));
 
         txtdescription.setColumns(20);
         txtdescription.setRows(5);
         jScrollPane2.setViewportView(txtdescription);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 51, 102));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 386, 229, 77));
+
+        jLabel2.setFont(new java.awt.Font("Goudy Old Style", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ajouter Produit");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 300, 51));
+        getContentPane().add(txtnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 131, 207, 29));
+        getContentPane().add(txtqte, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 186, 207, 29));
+        getContentPane().add(txtprix, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 233, 207, 29));
 
         buttonGroup1.add(jRadioButtonFalse);
+        jRadioButtonFalse.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        jRadioButtonFalse.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonFalse.setText("Non");
+        getContentPane().add(jRadioButtonFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 353, 53, -1));
 
         buttonGroup1.add(jRadioButtonTrue);
+        jRadioButtonTrue.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        jRadioButtonTrue.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonTrue.setText("Oui");
+        getContentPane().add(jRadioButtonTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 353, 49, -1));
+        getContentPane().add(txtcouleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 288, 207, 29));
 
+        jLabelImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(jLabelImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(542, 172, 252, 210));
+
+        selectImage.setFont(new java.awt.Font("Goudy Old Style", 0, 14)); // NOI18N
         selectImage.setText("Sélectionner Image");
         selectImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectImageActionPerformed(evt);
             }
         });
+        getContentPane().add(selectImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 131, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnRecherche)
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtpid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(qte, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnupdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(selectImage)
-                        .addGap(244, 244, 244))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButtonTrue, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButtonFalse, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtcouleur)
-                                        .addComponent(txtqte)
-                                        .addComponent(txtprix, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addComponent(txtnom, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                        .addComponent(jLabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(315, 315, 315))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnom, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtqte, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtprix, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcouleur, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButtonFalse)
-                            .addComponent(jRadioButtonTrue)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(selectImage)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(27, 27, 27)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(qte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtpid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnupdate)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnRecherche)
-                                    .addGap(30, 30, 30))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(btnajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/e9.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -316,63 +211,11 @@ public class ProduitJfram extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnajouterActionPerformed
 
-    private void btnRechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRechercheActionPerformed
-        try {
-            // TODO add your handling code here:
-            String pid=txtpid.getSelectedItem().toString();
-            pst=con.prepareStatement("select * from  produit where idprod=?");
-            pst.setString(1,pid);
-            rs=pst.executeQuery();
-            if(rs.next()==true){
-                
-                txtnom.setText(rs.getString(2));
-                txtprix.setText(rs.getString(3));
-                txtqte.setText(rs.getString(4));
-                   JOptionPane.showMessageDialog(this,"Record Found!! successfully!");
-            }else{
-                JOptionPane.showMessageDialog(this,"No Record found !!");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ProduitJfram.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_btnRechercheActionPerformed
-
-    private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
-        try {
-            // TODO add your handling code here:
-            String pname=txtnom.getText();
-            String price=txtprix.getText();
-            String qty=txtqte.getText();
-            String idprod=txtpid.getSelectedItem().toString();
-            pst=con.prepareStatement("update produit set pname=?, price=?,qty=? where idprod=?");
-            
-            pst.setString(1,pname);
-            pst.setString(2,price);
-            pst.setString(3,qty);
-            pst.setString(4,idprod);
-            int k=pst.executeUpdate();
-            if(k==1){
-                  JOptionPane.showMessageDialog(this,"Record has been successfully updated!!");
-                txtnom.setText("");
-                txtprix.setText("");
-                txtqte.setText("");
-               txtnom.requestFocus();
-               LoadProduitNo();
-            }else{
-                 JOptionPane.showMessageDialog(this,"Record has been failed to update!!");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ProduitJfram.class.getName()).log(Level.SEVERE, null, ex);
-        }
- 
-    }//GEN-LAST:event_btnupdateActionPerformed
-
     private void selectImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectImageActionPerformed
         // TODO add your handling code here:
         //setting default browser locations
         
-        JFileChooser browseImageFile=new JFileChooser("C:\\Users\\USER\\Desktop\\ANIME\\anime Images");
+        JFileChooser browseImageFile=new JFileChooser("C:\\");
         //Filter Image extensions
         FileNameExtensionFilter fnef=new FileNameExtensionFilter("IMAGES", "png","jpg","jpeg");
         browseImageFile.addChoosableFileFilter(fnef);
@@ -428,10 +271,9 @@ public class ProduitJfram extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRecherche;
     private javax.swing.JButton btnajouter;
-    private javax.swing.JButton btnupdate;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -443,13 +285,10 @@ public class ProduitJfram extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonFalse;
     private javax.swing.JRadioButton jRadioButtonTrue;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField prix;
-    private javax.swing.JTextField qte;
     private javax.swing.JButton selectImage;
     private javax.swing.JTextField txtcouleur;
     public javax.swing.JTextArea txtdescription;
     public javax.swing.JTextField txtnom;
-    private javax.swing.JComboBox<String> txtpid;
     public javax.swing.JTextField txtprix;
     public javax.swing.JTextField txtqte;
     // End of variables declaration//GEN-END:variables

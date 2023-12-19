@@ -102,11 +102,17 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
         Supprimer = new javax.swing.JButton();
         ConsulterProduit = new javax.swing.JButton();
         refreshbutton = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 255));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Malgun Gothic", 1, 18)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Goudy Old Style", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Liste des produits cosmetiques");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 570, 60));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,6 +127,10 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 579, 256));
+
+        jButton1.setBackground(new java.awt.Color(243, 221, 243));
+        jButton1.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
         jButton1.setText("Ajouter");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,78 +142,50 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 163, 100, 30));
 
+        UpdateButton.setBackground(new java.awt.Color(243, 221, 243));
+        UpdateButton.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
         UpdateButton.setText("Modifier");
         UpdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 163, 100, 30));
 
+        Supprimer.setBackground(new java.awt.Color(243, 221, 243));
+        Supprimer.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
         Supprimer.setText("Supprimer");
         Supprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SupprimerActionPerformed(evt);
             }
         });
+        getContentPane().add(Supprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 163, 110, 30));
 
+        ConsulterProduit.setBackground(new java.awt.Color(243, 221, 243));
+        ConsulterProduit.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
         ConsulterProduit.setText("Consulter");
         ConsulterProduit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsulterProduitActionPerformed(evt);
             }
         });
+        getContentPane().add(ConsulterProduit, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 163, 100, 30));
 
-        refreshbutton.setText("REFERSH");
+        refreshbutton.setBackground(new java.awt.Color(243, 221, 243));
+        refreshbutton.setFont(new java.awt.Font("Goudy Old Style", 1, 16)); // NOI18N
+        refreshbutton.setText("Refresh");
         refreshbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshbuttonActionPerformed(evt);
             }
         });
+        getContentPane().add(refreshbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 24, 100, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
-                        .addGap(37, 37, 37))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(55, 55, 55)
-                        .addComponent(UpdateButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ConsulterProduit)
-                        .addGap(60, 60, 60)
-                        .addComponent(Supprimer)
-                        .addGap(67, 67, 67))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(refreshbutton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(refreshbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(UpdateButton)
-                    .addComponent(Supprimer)
-                    .addComponent(ConsulterProduit))
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/e9.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -375,6 +357,7 @@ ConsulterProduitJFrame consulterProduitJFrame=new ConsulterProduitJFrame();
     private javax.swing.JButton UpdateButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton refreshbutton;
